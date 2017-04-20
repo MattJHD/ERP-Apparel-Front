@@ -30,6 +30,11 @@ const Compta = {
     icon: 'icon-credit-card'
 }
 
+const Social = {
+    text: 'Res. Sociaux',
+    icon: 'icon-globe'
+}
+
 const Dashboard = {
     text: 'Dashboard',
     link: '/dashboard',
@@ -419,6 +424,7 @@ export const menu = [
     Home,
     Dashboard,
     Product,
+    Social,
     Game,
 /*
     headingComponents,
