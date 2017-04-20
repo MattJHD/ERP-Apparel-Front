@@ -1,5 +1,49 @@
 <div class="content-heading">Products</div>
 <div class="table-responsive b0">
+    <button class="btn btn-labeled btn-primary" routerLink="/ecommerce/productview"><span class="btn-label"><i class="fa fa-plus"></i></span>Ajouter un produit</button>
+    <br/>
+    <br/>
+    <div class="box-placeholder">
+        <h4>Filtre: </h4>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Recherche" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select class="form-control" name="account">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select class="form-control" name="account">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select class="form-control" name="account">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pagination class="pagination-sm" [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (numPages)="numPages"></pagination>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -272,4 +316,5 @@
             </tr>
         </tbody>
     </table>
+    <pagination class="pagination-sm" [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (numPages)="numPages"></pagination>
 </div>

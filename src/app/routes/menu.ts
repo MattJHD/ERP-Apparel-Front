@@ -5,23 +5,50 @@ const Home = {
     icon: 'icon-home'
 };
 
+const Product = {
+    text: 'Product',
+    link: '/ecommerce',
+    icon: 'icon-basket-loaded',
+    submenu: [
+        {
+            text: 'List',
+            link: '/ecommerce/products'
+        },
+        {
+            text: 'Echange'
+        }
+    ]
+}
+
+const Game = {
+    text: 'Game',
+    icon: 'icon-badge'
+}
+
+const Compta = {
+    text: 'Comptabilité',
+    icon: 'icon-credit-card'
+}
+
 const Dashboard = {
     text: 'Dashboard',
     link: '/dashboard',
     icon: 'icon-speedometer',
     submenu: [
         {
-            text: 'Dashbord v1',
+            //text: 'Dashbord v1',
+            text: 'Manageur',
             link: '/dashboard/v1'
         },
         {
-            text: 'Dashbord v2',
+            text: 'Vendeur',
             link: '/dashboard/v2'
-        },
+        }
+        /*,
         {
             text: 'Dashbord v3',
             link: '/dashboard/v3'
-        }
+        }*/
     ]
 };
 
@@ -388,11 +415,14 @@ const headingMore = {
 };
 
 export const menu = [
-    headingMain,
+    //headingMain,
     Home,
     Dashboard,
-    Widgets,
+    Product,
+    Game,
+/*
     headingComponents,
+    Widgets,
     Elements,
     Forms,
     Charts,
@@ -402,5 +432,5 @@ export const menu = [
     Pages,
     Blog,
     Ecommerce,
-    Extras
+    Extras*/
 ];
