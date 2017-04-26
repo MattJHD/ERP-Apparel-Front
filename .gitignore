@@ -18,3 +18,5 @@ tmp/
 **/.DS_Store
 .DS_Store
 
+# Configs 
+environment.ts/
