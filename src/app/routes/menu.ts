@@ -5,14 +5,13 @@ const Home = {
     icon: 'icon-home'
 };
 
-const Product = {
-    text: 'Product',
-    link: '/ecommerce',
+const Articles = {
+    text: 'Articles',
     icon: 'icon-basket-loaded',
     submenu: [
         {
             text: 'List',
-            link: '/ecommerce/products'
+            link: '/articles/list'
         },
         {
             text: 'Echange'
@@ -423,10 +422,10 @@ export const menu = [
     //headingMain,
     Home,
     Dashboard,
-    Product,
+    Articles,
     Social,
     Game,
-/*
+
     headingComponents,
     Widgets,
     Elements,
@@ -438,5 +437,5 @@ export const menu = [
     Pages,
     Blog,
     Ecommerce,
-    Extras*/
+    Extras
 ];

@@ -1,0 +1,112 @@
+<div class="content-heading">Products</div>
+<div class="table-responsive b0">
+    <button class="btn btn-labeled btn-primary" routerLink="/ecommerce/productview"><span class="btn-label"><i class="fa fa-plus"></i></span>Ajouter un produit</button>
+    <br/>
+    <br/>
+    <div class="box-placeholder">
+        <h4>Filtre: </h4>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Recherche" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select class="form-control" name="account">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select class="form-control" name="account">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select class="form-control" name="account">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <strong>#</strong>
+                </th>
+                <th>
+                    <strong>NAME</strong>
+                </th>
+                <th>
+                    <strong>PRICE</strong>
+                </th>
+                <th>
+                    <strong>CATEGORY</strong>
+                </th>
+                <th>
+                    <strong>MATERIALS</strong>
+                </th>
+                <th>
+                    <strong>COLORS</strong>
+                </th>
+                <th>
+                    <strong>BRAND</strong>
+                </th>
+                <th>
+                    <strong>SHOP</strong>
+                </th>
+                <th>
+                    <strong>STATUS</strong>
+                </th>
+                <th>
+                    <strong>SEND BY</strong>
+                </th>
+                <th>
+                    <strong>SEND AT</strong>
+                </th>
+                <th class="text-center">
+                    <strong>ACTION</strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let article of articles">
+                <td>{{ article.id }}</td>
+                <td>{{ article.name }}</td>
+                <td>{{ article.price }}€</td>
+                <td>{{ article.category }}</td>
+                <td>{{ article.materials }}</td>
+                <td>{{ article.colors }}</td>
+                <td>{{ article.brand }}</td>
+                <td>{{ article.shop }}</td>
+                <td>
+                    <span style="text-align: center" *ngIf="!article.solded" class="label label-success">En Stock</span>
+                    <span style="text-align: center" *ngIf="article.solded" class="label label-danger">Vendu</span>
+                </td>
+                <td>{{ article.soldBy }}</td>
+                <td>{{ article.soldAt | date: 'dd/MM/yyyy' }}</td>
+                <td class="text-center">
+                    <button class="btn btn-sm btn-default" type="button">
+                        <em class="fa fa-search"></em>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination class="pagination-sm" [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (numPages)="numPages"></pagination>
+</div>
