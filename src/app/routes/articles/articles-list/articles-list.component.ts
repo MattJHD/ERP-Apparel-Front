@@ -26,10 +26,10 @@ export class ArticlesListComponent implements OnInit {
   }
 
   getAll() {
-    this.crudService.getTest('articles', {})
+    this.crudService.getAll('articles', {})
                     .subscribe(
                         data => {
-                            this.articles.push(data);
+                            this.articles = data;
                             console.log(this.articles)
                         }
                     )

@@ -16,12 +16,12 @@ export class CrudService {
     private url = this.globalsService.BACK_URL;
 
     getById(entity, id) {
-        return this.http.get(this.url + entity +'/' + id)
+        return this.http.get(this.url + entity + '/' + id)
                         .map((response: Response) => response.json());
     }
 
     getAll(entity, param = null) {
-        return this.http.post(this.url + entity + '/all', param)
+        return this.http.post(this.url + entity, param)
                         .map((response: Response) => response.json());
     }
 
@@ -31,7 +31,7 @@ export class CrudService {
     }
 
     update(entity, data) {
-        return this.http.put(this.url + entity +'/update' + data.id, data)
+        return this.http.put(this.url + entity + '/update' + data.id, data)
                         .map((response: Response) => response.json());
     }
 
