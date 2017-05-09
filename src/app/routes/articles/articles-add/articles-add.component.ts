@@ -165,13 +165,13 @@ export class ArticlesAddComponent implements OnInit {
 
             console.log('Valid !!!')
          
-            //this.addArticle(value);
+            this.addArticle(value);
         }
         console.log(value);
     }
 
     addArticle(data) {
-        this.crudService.create('articles', data)
+        this.crudService.create('article', data)
                         .subscribe( 
                             data => { 
                                 this.router.navigate(['/articles/list']) 

@@ -26,7 +26,7 @@ export class CrudService {
     }
 
     create(entity, data) {
-        return this.http.post(this.url + entity + '/add', data)
+        return this.http.post(this.url + entity, data)
                         .map((response: Response) => response.json());
     }
 
