@@ -19,4 +19,4 @@ tmp/
 .DS_Store
 
 # Configs 
-src/environments/environment.ts/
+src/environments/environment.ts
