@@ -20,8 +20,8 @@ export class CrudService {
                         .map((response: Response) => response.json());
     }
 
-    getAll(entity, param = null) {
-        return this.http.post(this.url + entity, param)
+    getAll(entity) {
+        return this.http.get(this.url + entity)
                         .map((response: Response) => response.json());
     }
 
@@ -32,11 +32,6 @@ export class CrudService {
 
     update(entity, data) {
         return this.http.put(this.url + entity + '/update' + data.id, data)
-                        .map((response: Response) => response.json());
-    }
-
-    getTest(entity, param = null) {
-        return this.http.post(this.url + entity + '/test', param)
                         .map((response: Response) => response.json());
     }
 }

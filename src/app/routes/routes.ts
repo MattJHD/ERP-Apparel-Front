@@ -25,8 +25,8 @@ export const routes = [
             { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
             { path: 'blog', loadChildren: './blog/blog.module#BlogModule' },
             { path: 'ecommerce', loadChildren: './ecommerce/ecommerce.module#EcommerceModule' },
-            { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' }
-            ,
+            { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
+            
             { path: 'articles', loadChildren: './articles/articles.module#ArticlesModule' }
         ]
     },

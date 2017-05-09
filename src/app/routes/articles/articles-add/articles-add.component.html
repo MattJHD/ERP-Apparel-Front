@@ -1,0 +1,113 @@
+<div class="content-heading">Products</div>
+
+<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+                <!-- START panel-->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <fieldset class="b0">
+                            <legend>Add Articles</legend>
+                        </fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" formControlName="name"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Price</label>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">€</span>
+                                    <input class="form-control" type="number" formControlName="price"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Size</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" formControlName="size"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Categories</label>
+                            <div class="col-sm-6">
+                                <ng-select #SelectCategories
+                                    (data)="valueCategories" 
+                                    [multiple]="true"
+                                    [items]="itemsCategories" 
+                                    [disabled]="disabled" 
+                                    (data)="refreshValueCategories($event)" 
+                                    (selected)="selectedCategories($event)" 
+                                    (removed)="removedCategories($event)"
+                                    placeholder="No categories selected">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Materials</label>
+                            <div class="col-sm-6">
+                                <ng-select #SelectMaterials
+                                    (data)="valueMaterials" 
+                                    [multiple]="true"
+                                    [items]="itemsMaterials" 
+                                    [disabled]="disabled" 
+                                    (data)="refreshValueMaterials($event)" 
+                                    (selected)="selectedMaterials($event)" 
+                                    (removed)="removedMaterials($event)"
+                                    placeholder="No materials selected">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Colors</label>
+                            <div class="col-sm-6">
+                                <ng-select #SelectColors
+                                    (data)="valueColors" 
+                                    [multiple]="true"
+                                    [items]="itemsColors" 
+                                    [disabled]="disabled" 
+                                    (data)="refreshValueColors($event)" 
+                                    (selected)="selectedColors($event)" 
+                                    (removed)="removedColors($event)"
+                                    placeholder="No colors selected">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Brands</label>
+                            <div class="col-sm-6">
+                                <ng-select #SelectBrands
+                                    (data)="valueBrands" 
+                                    [multiple]="true"
+                                    [items]="itemsBrands" 
+                                    [disabled]="disabled" 
+                                    (data)="refreshValueBrands($event)" 
+                                    (selected)="selectedBrands($event)" 
+                                    (removed)="removedBrands($event)"
+                                    placeholder="No category selected">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Shops</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" formControlName="shops">
+                                    <option *ngFor="let shop of allShops" [ngValue]="shop">{{ shop.name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-sm btn-success">Save</button>
+                        <button routerLink="/articles/list" class="btn btn-sm btn-danger">Back</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

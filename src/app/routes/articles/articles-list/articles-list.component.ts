@@ -26,7 +26,7 @@ export class ArticlesListComponent implements OnInit {
   }
 
   getAll() {
-    this.crudService.getAll('articles', {})
+    this.crudService.getAll('articles')
                     .subscribe(
                         data => {
                             this.articles = data;
