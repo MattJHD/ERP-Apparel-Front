@@ -5,10 +5,12 @@ import { SelectModule } from 'ng2-select';
 import { SharedModule } from '../../shared/shared.module';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticlesAddComponent } from './articles-add/articles-add.component';
+import { ArticlesShowComponent } from './articles-show/articles-show.component';
 
 const routes: Routes = [
     { path: 'list', component: ArticlesListComponent },
     { path: 'add', component: ArticlesAddComponent },
+    { path: 'show/:id', component: ArticlesShowComponent },
 ];
 
 @NgModule({
@@ -19,7 +21,8 @@ const routes: Routes = [
     ],
     declarations: [
         ArticlesListComponent,
-        ArticlesAddComponent
+        ArticlesAddComponent,
+        ArticlesShowComponent
     ],
     exports: [
         RouterModule

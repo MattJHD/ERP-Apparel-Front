@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../core/crud/crud.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-articles-list',

@@ -97,13 +97,13 @@
                 <td><span class="label label-primary label-article" *ngFor="let brand of article.brands">{{ brand.name }}</span></td>
                 <td><span class="label label-primary label-article" *ngFor="let shop of article.shops">{{ shop.name }}</span></td>
                 <td>
-                    <span style="text-align: center" *ngIf="!article.solded" class="label label-success">En Stock</span>
-                    <span style="text-align: center" *ngIf="article.solded" class="label label-danger">Vendu</span>
+                    <span style="text-align: center" *ngIf="!article.solded" class="label label-success">Stock</span>
+                    <span style="text-align: center" *ngIf="article.solded" class="label label-danger">Sold</span>
                 </td>
                 <td>{{ article.sold_by }}</td>
                 <td>{{ article.sold_at | date: 'dd/MM/yyyy' }}</td>
                 <td class="text-center">
-                    <button class="btn btn-sm btn-default" type="button">
+                    <button [routerLink]="['/articles/show', article.id]" class="btn btn-sm btn-default" type="button">
                         <em class="fa fa-search"></em>
                     </button>
                 </td>

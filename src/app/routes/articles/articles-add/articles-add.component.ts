@@ -171,7 +171,7 @@ export class ArticlesAddComponent implements OnInit {
     }
 
     addArticle(data) {
-        this.crudService.create('article', data)
+        this.crudService.create('articles', data)
                         .subscribe( 
                             data => { 
                                 this.router.navigate(['/articles/list']) 

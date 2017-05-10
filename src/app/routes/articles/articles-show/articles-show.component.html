@@ -1,0 +1,84 @@
+<div class="content-heading">Articles</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead bb">Details</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">#</div>
+                        <div class="col-sm-8">
+                            <strong>{{ article.id }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Name:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ article.name }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Price:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ article.price }}€</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Categories:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-primary label-article" *ngFor="let category of article.categories">{{ category.name }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Materials:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-primary label-article" *ngFor="let material of article.materials">{{ material.name }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Colors:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-primary label-article" *ngFor="let color of article.colors">{{ color.name }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Brands:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-primary label-article" *ngFor="let brand of article.brands">{{ brand.name }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Shop:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-primary label-article" *ngFor="let shop of article.shops">{{ shop.name }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Shop:</div>
+                        <div class="col-sm-8">
+                            <span style="text-align: center" *ngIf="!article.solded" class="label label-success">Stock</span>
+                            <span style="text-align: center" *ngIf="article.solded" class="label label-danger">Sold</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Sold By:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ article.sold_by }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Sold At:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ article.sold_at | date: 'dd/MM/yyyy' }}</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button routerLink="/articles/list" class="btn btn-sm btn-danger">Back</button>
+    </div>
+</div>
