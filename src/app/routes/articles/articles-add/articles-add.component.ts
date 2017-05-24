@@ -62,7 +62,9 @@ export class ArticlesAddComponent implements OnInit {
                 'name': [null],
                 'price': [null],
                 'size': [null],
-                'shops': [null]
+                'shop': [null],
+                'brand': [null],
+                'category': [null]
             });
     }
 
@@ -96,25 +98,12 @@ export class ArticlesAddComponent implements OnInit {
                 return this.toasterService.pop('error', 'Price', 'Invalid Size');
             }
 
-            for (var i=0; i < this.valueCategories.length; i++) {
-                for (var j=0; j < this.allCategories.length; j++) {
-                    if(this.valueCategories[i]['text'] == this.allCategories[j]['name']){
-                        this.validCategories.push({id: this.allCategories[j].id});
-                    }
-                }
-            }
-            value['categories'] = this.validCategories;
-            if(this.validCategories.length == 0) {
-                return this.toasterService.pop('error', 'Categories', 'Invalid Categories');
-            }
-            this.validCategories = [];
-
             
 
             for (var i=0; i < this.valueMaterials.length; i++) {
                 for (var j=0; j < this.allMaterials.length; j++) {
                     if(this.valueMaterials[i]['text'] == this.allMaterials[j]['name']){
-                        this.validMaterials.push({id: this.allMaterials[j].id});
+                        this.validMaterials.push(this.allMaterials[j]);
                     }
                 }
             }
@@ -129,7 +118,7 @@ export class ArticlesAddComponent implements OnInit {
             for (var i=0; i < this.valueColors.length; i++) {
                 for (var j=0; j < this.allColors.length; j++) {
                     if(this.valueColors[i]['text'] == this.allColors[j]['name']){
-                        this.validColors.push({id: this.allColors[j].id});
+                        this.validColors.push(this.allColors[j]);
                     }
                 }
             }
@@ -138,30 +127,19 @@ export class ArticlesAddComponent implements OnInit {
                 return this.toasterService.pop('error', 'Colors', 'Invalid Colors');
             }
             this.validColors = [];
-            
 
 
-            for (var i=0; i < this.valueBrands.length; i++) {
-                for (var j=0; j < this.allBrands.length; j++) {
-                    if(this.valueBrands[i]['text'] == this.allBrands[j]['name']){
-                        this.validBrands.push({id: this.allBrands[j].id});
-                    }
-                }
-            }
-            value['brands'] = this.validBrands;
-            if(this.validBrands.length == 0) {
-                return this.toasterService.pop('error', 'Brands', 'Invalid Brands');
-            }
-            this.validBrands = [];
-
-
-            if(value['shops'] == null ) {
-                return this.toasterService.pop('error', 'Shops', 'Invalid Shops');
+            if(value['shop'] == null ) {
+                return this.toasterService.pop('error', 'Shop', 'Invalid Shop');
             }
 
-            var shop = [];
-            shop.push(value['shops']);
-            value['shops'] = shop;
+            if(value['brand'] == null ) {
+                return this.toasterService.pop('error', 'Brand', 'Invalid Brand');
+            }
+
+            if(value['category'] == null ) {
+                return this.toasterService.pop('error', 'Category', 'Invalid Category');
+            }
 
             console.log('Valid !!!')
          
@@ -190,10 +168,6 @@ export class ArticlesAddComponent implements OnInit {
                                 this.allCategories = data;
                                 console.log('/-----------------Categories-------------------/')
                                 console.log(this.allCategories);
-                                this.allCategories.forEach(item => {
-                                    this.itemsCategories.push(item.name);
-                                });
-                                this.selectCategories.items = this.itemsCategories;
                             }
                         )
     }
@@ -234,11 +208,6 @@ export class ArticlesAddComponent implements OnInit {
                             data => {
                                 this.allBrands = data;
                                 console.log('/-----------------Brands-------------------/')
-                                console.log(this.allBrands);
-                                this.allBrands.forEach(item => {
-                                    this.itemsBrands.push(item.name);
-                                });
-                                this.selectBrands.items = this.itemsBrands;
                             }
                         )
     }
@@ -248,22 +217,11 @@ export class ArticlesAddComponent implements OnInit {
                         .subscribe(
                             data => {
                                 this.allShops = data;
-                                console.log('/-----------------Brands-------------------/')
                                 console.log(this.allShops);
                             }
                         )
     }
 
-
-    public selectedCategories(value:any):void {
-        console.log('Selected value is: ', value);
-    }
-    public removedCategories(value:any):void {
-        console.log('Removed value is: ', value);
-    }
-    public refreshValueCategories(value:any):void {
-        this.valueCategories = value;
-    }
 
     public selectedMaterials(value:any):void {
         console.log('Selected value is: ', value);
@@ -283,15 +241,5 @@ export class ArticlesAddComponent implements OnInit {
     }
     public refreshValueColors(value:any):void {
         this.valueColors = value;
-    }
-
-    public selectedBrands(value:any):void {
-        console.log('Selected value is: ', value);
-    }
-    public removedBrands(value:any):void {
-        console.log('Removed value is: ', value);
-    }
-    public refreshValueBrands(value:any):void {
-        this.valueBrands = value;
     }
 }

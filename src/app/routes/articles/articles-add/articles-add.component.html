@@ -34,21 +34,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Categories</label>
-                            <div class="col-sm-6">
-                                <ng-select #SelectCategories
-                                    (data)="valueCategories" 
-                                    [multiple]="true"
-                                    [items]="itemsCategories" 
-                                    [disabled]="disabled" 
-                                    (data)="refreshValueCategories($event)" 
-                                    (selected)="selectedCategories($event)" 
-                                    (removed)="removedCategories($event)"
-                                    placeholder="No categories selected">
-                                </ng-select>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-sm-2 control-label">Materials</label>
                             <div class="col-sm-6">
                                 <ng-select #SelectMaterials
@@ -79,25 +64,26 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Brands</label>
+                            <label class="col-sm-2 control-label">Category</label>
                             <div class="col-sm-6">
-                                <ng-select #SelectBrands
-                                    (data)="valueBrands" 
-                                    [multiple]="true"
-                                    [items]="itemsBrands" 
-                                    [disabled]="disabled" 
-                                    (data)="refreshValueBrands($event)" 
-                                    (selected)="selectedBrands($event)" 
-                                    (removed)="removedBrands($event)"
-                                    placeholder="No category selected">
-                                </ng-select>
+                                <select class="form-control" formControlName="category">
+                                    <option *ngFor="let category of allCategories" [ngValue]="category">{{ category.name }}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Shops</label>
+                            <label class="col-sm-2 control-label">Shop</label>
                             <div class="col-sm-6">
-                                <select class="form-control" formControlName="shops">
+                                <select class="form-control" formControlName="shop">
                                     <option *ngFor="let shop of allShops" [ngValue]="shop">{{ shop.name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Brand</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" formControlName="brand">
+                                    <option *ngFor="let brand of allBrands" [ngValue]="brand">{{ brand.name }}</option>
                                 </select>
                             </div>
                         </div>

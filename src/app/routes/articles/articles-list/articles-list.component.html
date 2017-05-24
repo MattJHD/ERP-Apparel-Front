@@ -91,11 +91,11 @@
                 <td>{{ article.id }}</td>
                 <td>{{ article.name }}</td>
                 <td>{{ article.price }}€</td>          
-                <td><span class="label label-primary label-article" *ngFor="let category of article.categories">{{ category.name }}</span></td>
+                <td><span class="label label-primary label-article">{{ article.category.name }}</span></td>
                 <td><span class="label label-primary label-article" *ngFor="let material of article.materials">{{ material.name }}</span></td>
                 <td><span class="label label-primary label-article" *ngFor="let color of article.colors">{{ color.name }}</span></td>
-                <td><span class="label label-primary label-article" *ngFor="let brand of article.brands">{{ brand.name }}</span></td>
-                <td><span class="label label-primary label-article" *ngFor="let shop of article.shops">{{ shop.name }}</span></td>
+                <td><span class="label label-primary label-article">{{ article.brand.name }}</span></td>
+                <td><span class="label label-primary label-article">{{ article.shop.name }}</span></td>
                 <td>
                     <span style="text-align: center" *ngIf="!article.solded" class="label label-success">Stock</span>
                     <span style="text-align: center" *ngIf="article.solded" class="label label-danger">Sold</span>
