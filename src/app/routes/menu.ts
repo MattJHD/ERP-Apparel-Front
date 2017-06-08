@@ -32,6 +32,10 @@ const Settings = {
             text: 'Materials',
             link: '/materials/list',
         },
+        {
+            text: 'Categories',
+            link: '/categories/list',
+        },
     ]
 }
 
