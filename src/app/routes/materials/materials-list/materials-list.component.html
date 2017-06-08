@@ -1,0 +1,32 @@
+<div class="content-heading">Materials</div>
+<div class="table-responsive b0">
+    <button class="btn btn-labeled btn-primary" routerLink="/materials/add"><span class="btn-label"><i class="fa fa-plus"></i></span>Add Materials</button>
+    <br/>
+    <br/>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <strong>#</strong>
+                </th>
+                <th>
+                    <strong>NAME</strong>
+                </th>
+                <th class="text-center">
+                    <strong>ACTION</strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let material of materials">
+                <td>{{ material.id }}</td>
+                <td>{{ material.name }}</td>
+                <td class="text-center">
+                    <button [routerLink]="['/materials/edit', material.id]" class="btn btn-xs btn-warning" type="button">
+                        <em class="fa fa-wrench"></em>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -28,6 +28,10 @@ const Settings = {
             text: 'Colors',
             link: '/colors/list',
         },
+        {
+            text: 'Materials',
+            link: '/materials/list',
+        },
     ]
 }
 

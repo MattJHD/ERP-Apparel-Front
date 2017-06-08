@@ -28,7 +28,8 @@ export const routes = [
             { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
             
             { path: 'articles', loadChildren: './articles/articles.module#ArticlesModule' },
-            { path: 'colors', loadChildren: './colors/colors.module#ColorsModule' }
+            { path: 'colors', loadChildren: './colors/colors.module#ColorsModule' },
+            { path: 'materials', loadChildren: './materials/materials.module#MaterialsModule' }
         ]
     },
 

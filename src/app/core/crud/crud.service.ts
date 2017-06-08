@@ -31,7 +31,7 @@ export class CrudService {
     }
 
     update(entity, data) {
-        return this.http.put(this.url + entity + '/update' + data.id, data)
+        return this.http.put(this.url + entity + '/' + data.id, data)
                         .map((response: Response) => response.json());
     }
 }
