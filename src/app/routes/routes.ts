@@ -31,7 +31,8 @@ export const routes = [
             { path: 'colors', loadChildren: './colors/colors.module#ColorsModule' },
             { path: 'materials', loadChildren: './materials/materials.module#MaterialsModule' },
             { path: 'categories', loadChildren: './categories/categories.module#CategoriesModule' },
-            { path: 'brands', loadChildren: './brands/brands.module#BrandsModule' }
+            { path: 'brands', loadChildren: './brands/brands.module#BrandsModule' },
+            { path: 'shops', loadChildren: './shops/shops.module#ShopsModule' }
         ]
     },
 
