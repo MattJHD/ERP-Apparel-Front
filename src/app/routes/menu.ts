@@ -19,6 +19,18 @@ const Articles = {
     ]
 }
 
+
+const Settings = {
+    text: 'Setting',
+    icon: 'fa fa-gear',
+    submenu: [
+        {
+            text: 'Colors',
+            link: '/colors/list',
+        },
+    ]
+}
+
 const Game = {
     text: 'Game',
     icon: 'icon-badge'
@@ -425,6 +437,7 @@ export const menu = [
     Articles,
     Social,
     Game,
+    Settings,
 
     headingComponents,
     Widgets,

@@ -1,0 +1,32 @@
+<div class="content-heading">Colors</div>
+<div class="table-responsive b0">
+    <button class="btn btn-labeled btn-primary" routerLink="/colors/add"><span class="btn-label"><i class="fa fa-plus"></i></span>Add Colors</button>
+    <br/>
+    <br/>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <strong>#</strong>
+                </th>
+                <th>
+                    <strong>NAME</strong>
+                </th>
+                <th class="text-center">
+                    <strong>ACTION</strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let color of colors">
+                <td>{{ color.id }}</td>
+                <td>{{ color.name }}</td>
+                <td class="text-center">
+                    <button [routerLink]="['/colors/edit', color.id]" class="btn btn-xs btn-warning" type="button">
+                        <em class="fa fa-wrench"></em>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

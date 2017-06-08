@@ -27,7 +27,8 @@ export const routes = [
             { path: 'ecommerce', loadChildren: './ecommerce/ecommerce.module#EcommerceModule' },
             { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
             
-            { path: 'articles', loadChildren: './articles/articles.module#ArticlesModule' }
+            { path: 'articles', loadChildren: './articles/articles.module#ArticlesModule' },
+            { path: 'colors', loadChildren: './colors/colors.module#ColorsModule' }
         ]
     },
 
