@@ -27,7 +27,7 @@ export class ArticlesShowComponent implements OnInit {
   }
 
   getArticle(id) {
-    this.crudService.getById('article', id)
+    this.crudService.getById('articles', id)
                     .subscribe(
                         data => {
                             this.article = data;
