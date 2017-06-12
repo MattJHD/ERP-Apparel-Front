@@ -44,6 +44,10 @@ const Settings = {
             text: 'Shops',
             link: '/shops/list',
         },
+        {
+            text: 'Roles',
+            link: '/roles/list',
+        },
     ]
 }
 

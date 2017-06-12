@@ -1,0 +1,36 @@
+<div class="content-heading">Roles</div>
+
+<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
+<!-- START row-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- START panel-->
+        <div class="panel panel-default">
+            <form class="form" [formGroup]="valForm" (submit)="submitForm($event, valForm.value)">
+                <div class="panel-body">
+                    <fieldset class="b0" style="margin-bottom: 0;padding-bottom: 0">
+                        <legend>Add Role</legend>
+                    </fieldset>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" formControlName="libelle" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Permissions</label> 
+                        <div class="checkbox c-checkbox" *ngFor="let perm of allPerms">
+                            <label>
+                            <input #check type="checkbox" [disabled]="perm.disabled ? true : null" [(ngModel)]="perm.checked" [ngModelOptions]="{standalone: true}" name="{{ perm.id }}" (ngModelChange)="onChangePerms(perm)" data-md-icheck/>
+                            <span class="fa fa-check"></span>{{ perm.libelle }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-sm btn-success">Save</button>
+                    <button routerLink="/roles/list" class="btn btn-sm btn-primary">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <!-- END panel-->
+    </div>
+</div>
+<!-- END row-->

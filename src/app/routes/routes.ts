@@ -32,7 +32,9 @@ export const routes = [
             { path: 'materials', loadChildren: './materials/materials.module#MaterialsModule' },
             { path: 'categories', loadChildren: './categories/categories.module#CategoriesModule' },
             { path: 'brands', loadChildren: './brands/brands.module#BrandsModule' },
-            { path: 'shops', loadChildren: './shops/shops.module#ShopsModule' }
+            { path: 'shops', loadChildren: './shops/shops.module#ShopsModule' },
+
+            { path: 'roles', loadChildren: './roles/roles.module#RolesModule' }
         ]
     },
 
