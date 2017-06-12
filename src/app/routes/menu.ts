@@ -455,10 +455,10 @@ export const menu = [
     Home,
     Dashboard,
     Articles,
-    Social,
-    Game,
+    /*Social,
+    Game,*/
     Settings,
-
+/*
     headingComponents,
     Widgets,
     Elements,
@@ -470,5 +470,5 @@ export const menu = [
     Pages,
     Blog,
     Ecommerce,
-    Extras
+    Extras*/
 ];
