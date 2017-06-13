@@ -21,16 +21,14 @@ export class UsersEditComponent implements OnInit {
         showCloseButton: true
     });
 
-    @ViewChild('SelectMaterials') public selectMaterials: SelectComponent;
-    @ViewChild('SelectColors') public selectColors: SelectComponent;
+    @ViewChild('SelectShops') public selectShops: SelectComponent;
+    @ViewChild('SelectGroups') public selectGroups: SelectComponent;
   
     valForm: FormGroup;
 
-    allCategories = [];
-    allMaterials = [];
-    allColors = [];
-    allBrands = [];
+    allGroups = [];
     allShops = [];
+    allRoles = [];
     
     private disabled: boolean = false;
 
@@ -38,32 +36,28 @@ export class UsersEditComponent implements OnInit {
     validCategories: any[] = [];
     valueCategories: any = {};
 
-    itemsMaterials = [];
-    validMaterials: any[] = [];
-    valueMaterials: any = {};
-
-    itemsBrands = [];
-    validBrands: any[] = [];
-    valueBrands: any = {};
+    itemsGroups = [];
+    validGroups: any[] = [];
+    valueGroups: any = {};
 
     id: number;
     private sub: any;
 
-    article = {};
+    user = {};
 
-    valueColor: any = {};
-    initColor: any[] = [];
-    itemsColor: string[];
-    apiItemsColor: any[];
-    validColor: any[] = [];
-    changeColor: boolean = false;
+    valueShop: any = {};
+    initShop: any[] = [];
+    itemsShop: string[];
+    apiItemsShop: any[];
+    validShop: any[] = [];
+    changeShop: boolean = false;
 
-    valueMaterial: any = {};
-    initMaterial: any[] = [];
-    itemsMaterial: string[];
-    apiItemsMaterial: any[];
-    validMaterial: any[] = [];
-    changeMaterial: boolean = false;
+    valueGroup: any = {};
+    initGroup: any[] = [];
+    itemsGroup: string[];
+    apiItemsGroup: any[];
+    validGroup: any[] = [];
+    changeGroup: boolean = false;
 
     constructor(
         private route: ActivatedRoute, 
@@ -74,34 +68,33 @@ export class UsersEditComponent implements OnInit {
             // Model Driven validation
             this.valForm = fb.group({
                 'name': [null],
-                'price': [null],
-                'size': [null],
-                'shop': [null],
-                'brand': [null],
-                'category': [null]
+                'firstname': [null],
+                'username': [null],
+                'email': [null],
+                'phone': [null],
+                'role': [null],
+                'isactive': [],
             });
     }
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id'];
-            this.getArticle(this.id);
+            this.getUser(this.id);
         });
     }
 
-    getArticle(id) {
-        this.crudService.getById('articles', id)
+    getUser(id) {
+        this.crudService.getById('users', id)
                         .subscribe(
                             data => {
-                                this.article = data;
+                                this.user = data;
                                 console.log('/-------------------------')
-                                console.log(this.article)
+                                console.log(this.user)
                                 console.log('/-------------------------')
-                                this.getAllCategories();
-                                this.getAllMaterials();
-                                this.getAllColors();
-                                this.getAllBrands();
+                                this.getAllGroups();
                                 this.getAllShops();
+                                this.getAllRoles();
                             }
                         )
     }
@@ -120,66 +113,68 @@ export class UsersEditComponent implements OnInit {
                 return this.toasterService.pop('error', 'Name', 'Invalid Name');
             }
 
-            if(value['price'] == null) {
-                return this.toasterService.pop('error', 'Price', 'Invalid Price');
+            if(value['firstname'] == null) {
+                return this.toasterService.pop('error', 'Firstname', 'Invalid Firstname');
             }
 
-            if(value['size'] == null) {
-                return this.toasterService.pop('error', 'Price', 'Invalid Size');
+            if(value['username'] == null) {
+                return this.toasterService.pop('error', 'Username', 'Invalid Username');
             }
 
-            
+            if(value['email'] == null ) {
+                return this.toasterService.pop('error', 'Email', 'Invalid Email');
+            }
+
+            if(value['phone'] == null ) {
+                return this.toasterService.pop('error', 'Phone', 'Invalid Phone');
+            }
+
+            if(value['role'] == null) {
+                return this.toasterService.pop('error', 'Role', 'Invalid Role');
+            }
 
 
-            var materials = (this.changeMaterial) ? this.valueMaterial : this.initMaterial;
+            var groups = (this.changeGroup) ? this.valueGroup : this.initGroup;
 
-            for (var i=0; i < materials.length; i++) {
-                for (var j=0; j < this.apiItemsMaterial.length; j++) {
-                    if(materials[i]['text'] == this.apiItemsMaterial[j].name){
-                        this.validMaterial.push({ id:this.apiItemsMaterial[j].id });
+            for (var i=0; i < groups.length; i++) {
+                for (var j=0; j < this.apiItemsGroup.length; j++) {
+                    if(groups[i]['text'] == this.apiItemsGroup[j].name){
+                        this.validGroup.push(this.apiItemsGroup[j]);
                     }
                 }
             }
-            value['materials'] = this.validMaterial;
-            if(this.validMaterial.length == 0) {
-                return this.toasterService.pop('error', 'Materiaux', 'Veuillez saisir un/des Materiau/Materiaux');
+            value['groups'] = this.validGroup;
+            if(this.validGroup.length == 0) {
+                return this.toasterService.pop('error', 'Groups', 'Invalid Groups');
             }
-            this.validMaterial = [];
+            this.validGroup = [];
             
 
 
             
-            var colors = (this.changeColor) ? this.valueColor : this.initColor;
+            var shops = (this.changeShop) ? this.valueShop : this.initShop;
 
-            console.log(colors);
+            console.log(shops);
 
-            for (var i=0; i < colors.length; i++) {
-                for (var j=0; j < this.apiItemsColor.length; j++) {
-                    if(colors[i]['text'] == this.apiItemsColor[j].name){
-                        this.validColor.push({ id: this.apiItemsColor[j].id });
+            for (var i=0; i < shops.length; i++) {
+                for (var j=0; j < this.apiItemsShop.length; j++) {
+                    if(shops[i]['text'] == this.apiItemsShop[j].name){
+                        this.validShop.push(this.apiItemsShop[j]);
                     }
                 }
             }
-            value['colors'] = this.validColor;
-            if(this.validColor.length == 0) {
-                return this.toasterService.pop('error', 'Couleur', 'Veuillez saisir une/des Couleur/Couleurs');
+            value['shops'] = this.validShop;
+            if(this.validShop.length == 0) {
+                return this.toasterService.pop('error', 'Shops', 'Invalid Shops');
             }
-            this.validColor = [];
-
-
-            if(value['shop'] == null ) {
-                return this.toasterService.pop('error', 'Shop', 'Invalid Shop');
-            }
-
-            if(value['brand'] == null ) {
-                return this.toasterService.pop('error', 'Brand', 'Invalid Brand');
-            }
-
-            if(value['category'] == null ) {
-                return this.toasterService.pop('error', 'Category', 'Invalid Category');
-            }
+            this.validShop = [];
 
             console.log('Valid !!!')
+
+            value['id'] = this.user['id'];
+            value['salt'] = '';
+            value['password'] = this.user['password'];
+            value['date_creation'] = this.user['date_creation'];
          
             this.addArticle(value);
         }
@@ -187,10 +182,10 @@ export class UsersEditComponent implements OnInit {
     }
 
     addArticle(data) {
-        this.crudService.update('articles', data)
+        this.crudService.update('users', data)
                         .subscribe( 
                             data => { 
-                                this.router.navigate(['/articles/list']) 
+                                this.router.navigate(['/users/list']) 
                             }, 
                             error => { 
                                 console.log(JSON.stringify(error.json()))
@@ -198,137 +193,108 @@ export class UsersEditComponent implements OnInit {
                         ); 
     }
 
-    getAllCategories() {
-        this.itemsCategories = [];
-        this.crudService.getAll('categories')
+    getAllGroups() {
+        this.itemsGroup = [];
+        this.crudService.getAll('groups')
                         .subscribe(
                             data => {
-                                this.allCategories = data;
-                                for (var i=0; i < this.allCategories.length; i++) {
-                                    if(this.article['category'].id == this.allCategories[i].id){
-                                        this.article['category'] = this.allCategories[i];
+                                this.apiItemsGroup = data;
+                                this.apiItemsGroup.forEach(item => {
+                                    this.itemsGroup.push(item.name);
+                                });
+                                let i = 0;
+                                this.selectGroups.items = this.itemsGroup;
+
+                                for(var j=0; j<this.apiItemsGroup.length; j++){
+                                    for(var k=0; k<this.user['groups'].length; k++){
+                                        if(this.apiItemsGroup[j].id == this.user['groups'][k].id){
+                                            var group = {
+                                                'id': this.apiItemsGroup[j].name,
+                                                'text': this.apiItemsGroup[j].name,
+                                            }; 
+                                            this.initGroup.push(group);
+                                        }
+                                    }
+                                }
+
+                                this.selectGroups.active = this.initGroup;
+                            }
+                        )
+    }
+
+    
+
+    getAllRoles() {
+        this.crudService.getAll('roles')
+                        .subscribe(
+                            data => {
+                                this.allRoles = data;
+                                for (var i=0; i < this.allRoles.length; i++) {
+                                    if(this.user['role'].id == this.allRoles[i].id){
+                                        this.user['role'] = this.allRoles[i];
                                     } 
                                  } 
                             }
                         )
     }
 
-    getAllMaterials() {
-        this.itemsMaterial = [];
-        this.crudService.getAll('materials')
-                        .subscribe(
-                            data => {
-                                this.apiItemsMaterial = data;
-                                this.apiItemsMaterial.forEach(item => {
-                                    this.itemsMaterial.push(item.name);
-                                });
-                                let i = 0;
-                                this.selectMaterials.items = this.itemsMaterial;
-
-                                for(var j=0; j<this.apiItemsMaterial.length; j++){
-                                    for(var k=0; k<this.article['materials'].length; k++){
-                                        if(this.apiItemsMaterial[j].id == this.article['materials'][k].id){
-                                            var material = {
-                                                'id': this.apiItemsMaterial[j].name,
-                                                'text': this.apiItemsMaterial[j].name,
-                                            }; 
-                                            this.initMaterial.push(material);
-                                        }
-                                    }
-                                }
-
-                                this.selectMaterials.active = this.initMaterial;
-                            }
-                        )
-    }
-
-    getAllColors() {
-        this.itemsColor = [];
-        this.crudService.getAll('colors')
-                        .subscribe(
-                            data => {
-                                this.apiItemsColor = data;
-                                this.apiItemsColor.forEach(item => {
-                                    this.itemsColor.push(item.name);
-                                });
-                                let i = 0;
-                                this.selectColors.items = this.itemsColor;
-
-                                for(var j=0; j<this.apiItemsColor.length; j++){
-                                    for(var k=0; k<this.article['colors'].length; k++){
-                                        if(this.apiItemsColor[j].id == this.article['colors'][k].id){ 
-                                            var color = {
-                                                'id': this.apiItemsColor[j].name,
-                                                'text': this.apiItemsColor[j].name,
-                                            }; 
-                                            this.initColor.push(color);
-                                        }
-                                    }
-                                }
-
-                                this.selectColors.active = this.initColor;
-                            }
-                        )
-    }
-
-    getAllBrands() {
-        this.crudService.getAll('brands')
-                        .subscribe(
-                            data => {
-                                this.allBrands = data;
-                                for (var i=0; i < this.allBrands.length; i++) {
-                                    if(this.article['brand'].id == this.allBrands[i].id){
-                                        this.article['brand'] = this.allBrands[i];
-                                    } 
-                                 } 
-                                console.log('/-----------------Brands-------------------/')
-                            }
-                        )
-    }
 
     getAllShops() {
+        this.itemsShop = [];
         this.crudService.getAll('shops')
                         .subscribe(
                             data => {
-                                this.allShops = data;
-                                for (var i=0; i < this.allShops.length; i++) {
-                                    if(this.article['shop'].id == this.allShops[i].id){
-                                        this.article['shop'] = this.allShops[i];
-                                    } 
-                                 } 
+                                this.apiItemsShop = data;
+                                this.apiItemsShop.forEach(item => {
+                                    this.itemsShop.push(item.name);
+                                });
+                                let i = 0;
+                                this.selectShops.items = this.itemsShop;
+
+                                for(var j=0; j<this.apiItemsShop.length; j++){
+                                    for(var k=0; k<this.user['shops'].length; k++){
+                                        if(this.apiItemsShop[j].id == this.user['shops'][k].id){ 
+                                            var shop = {
+                                                'id': this.apiItemsShop[j].name,
+                                                'text': this.apiItemsShop[j].name,
+                                            }; 
+                                            this.initShop.push(shop);
+                                        }
+                                    }
+                                }
+
+                                this.selectShops.active = this.initShop;
                             }
                         )
     }
-
-
     
-    public selectedMaterials(value:any):void {
+    public selectedGroups(value:any):void {
         console.log('Selected value is: ', value);
-        this.changeMaterial = true;
+        this.changeGroup = true;
     }
 
-    public removedMaterials(value:any):void {
+    public removedGroups(value:any):void {
         console.log('Removed value is: ', value);
-        this.changeMaterial = true;
+        this.changeGroup = true;
     }
 
-    public refreshvalueMaterials(value:any):void {
-        this.valueMaterial = value;
-        this.changeMaterial = true;
+    public refreshvalueGroups(value:any):void {
+        this.valueGroup = value;
+        this.changeGroup = true;
     }
 
-    public selectedColors(value:any):void {
+    public selectedShops(value:any):void {
         console.log('Selected value is: ', value);
-        this.changeColor = true;
+        this.changeShop = true;
     }
 
-    public removedColors(value:any):void {
+    public removedShops(value:any):void {
         console.log('Removed value is: ', value);
-        this.changeColor = true;
+        this.changeShop = true;
     }
 
-    public refreshValueColors(value:any):void {
-        this.valueColor = value;
-        this.changeColor = true;
+    public refreshValueShops(value:any):void {
+        this.valueShop = value;
+        this.changeShop = true;
     }
 }

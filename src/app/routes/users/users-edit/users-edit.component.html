@@ -13,84 +13,87 @@
                             <legend>Edit Articles</legend>
                         </fieldset>
                         <div class="form-group">
+                            <label class="col-sm-2 control-label">Active</label>
+                            <div class="col-sm-6">
+                                <label class="switch">
+                                    <input type="checkbox" [(ngModel)]="user.isactive" formControlName="isactive">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-6">
-                                <input class="form-control" [(ngModel)]="article.name" type="text" formControlName="name"/>
+                                <input class="form-control" type="text" [(ngModel)]="user.name" formControlName="name"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Price</label>
+                            <label class="col-sm-2 control-label">Firstname</label>
                             <div class="col-sm-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">€</span>
-                                    <input class="form-control" [(ngModel)]="article.price" type="number" formControlName="price"/>
-                                </div>
+                                <input class="form-control" type="text" [(ngModel)]="user.firstname" formControlName="firstname"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Size</label>
+                            <label class="col-sm-2 control-label">Username</label>
                             <div class="col-sm-6">
-                                <input class="form-control" [(ngModel)]="article.size" type="text" formControlName="size"/>
+                                <input class="form-control" type="text" [(ngModel)]="user.username" formControlName="username"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Materials</label>
+                            <label class="col-sm-2 control-label">Email</label>
                             <div class="col-sm-6">
-                                <ng-select #SelectMaterials
-                                    (data)="valueMaterials" 
+                                <input class="form-control" type="email" [(ngModel)]="user.email" formControlName="email"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Phone</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="number" [(ngModel)]="user.phone" formControlName="phone"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Role</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" [(ngModel)]="user.role" formControlName="role">
+                                    <option *ngFor="let role of allRoles" [ngValue]="role">{{ role.libelle }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Shops</label>
+                            <div class="col-sm-6">
+                                <ng-select #SelectShops
+                                    (data)="valueShops" 
                                     [multiple]="true"
-                                    [items]="itemsMaterials" 
+                                    [items]="itemsShops" 
                                     [disabled]="disabled" 
-                                    (data)="refreshValueMaterials($event)" 
-                                    (selected)="selectedMaterials($event)" 
-                                    (removed)="removedMaterials($event)"
-                                    placeholder="No materials selected">
+                                    (data)="refreshValueShops($event)" 
+                                    (selected)="selectedShops($event)" 
+                                    (removed)="removedShops($event)"
+                                    placeholder="No Shops selected">
                                 </ng-select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Colors</label>
+                            <label class="col-sm-2 control-label">Groups</label>
                             <div class="col-sm-6">
-                                <ng-select #SelectColors
-                                    (data)="valueColors" 
+                                <ng-select #SelectGroups
+                                    (data)="valueGroups" 
                                     [multiple]="true"
-                                    [items]="itemsColors" 
+                                    [items]="itemsGroups" 
                                     [disabled]="disabled" 
-                                    (data)="refreshValueColors($event)" 
-                                    (selected)="selectedColors($event)" 
-                                    (removed)="removedColors($event)"
-                                    placeholder="No colors selected">
+                                    (data)="refreshValueGroups($event)" 
+                                    (selected)="selectedGroups($event)" 
+                                    (removed)="removedGroups($event)"
+                                    placeholder="No Groups selected">
                                 </ng-select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Category</label>
-                            <div class="col-sm-6">
-                                <select class="form-control" [(ngModel)]="article.category" formControlName="category">
-                                    <option *ngFor="let category of allCategories" [ngValue]="category">{{ category.name }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Shop</label>
-                            <div class="col-sm-6">
-                                <select class="form-control" [(ngModel)]="article.shop" formControlName="shop">
-                                    <option *ngFor="let shop of allShops" [ngValue]="shop">{{ shop.name }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Brand</label>
-                            <div class="col-sm-6">
-                                <select class="form-control" [(ngModel)]="article.brand" formControlName="brand">
-                                    <option *ngFor="let brand of allBrands" [ngValue]="brand">{{ brand.name }}</option>
-                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="panel-footer">
                         <button type="submit" class="btn btn-sm btn-success">Save</button>
-                        <button routerLink="/articles/list" class="btn btn-sm btn-danger">Back</button>
+                        <button routerLink="/users/list" class="btn btn-sm btn-danger">Back</button>
                     </div>
                 </div>
             </form>

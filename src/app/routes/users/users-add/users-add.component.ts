@@ -72,7 +72,6 @@ export class UsersAddComponent implements OnInit {
         this.getAllRoles();
         this.getAllShops();
         this.getAllGroups();
-        this.getAllBrands();
     }
 
     submitForm($ev, value: any) {
@@ -143,12 +142,12 @@ export class UsersAddComponent implements OnInit {
             value['password'] = '';
             value['date_creation'] = (new Date().toISOString()).slice(0, 10);
          
-            this.addArticle(value);
+            this.addUser(value);
         }
         console.log(value);
     }
 
-    addArticle(data) {
+    addUser(data) {
         this.crudService.create('users', data)
                         .subscribe( 
                             data => { 
@@ -201,17 +200,6 @@ export class UsersAddComponent implements OnInit {
                             }
                         )
     }
-
-    getAllBrands() {
-        this.crudService.getAll('brands')
-                        .subscribe(
-                            data => {
-                                this.allBrands = data;
-                                console.log('/-----------------Brands-------------------/')
-                            }
-                        )
-    }
-
 
     public selectedShops(value:any):void {
         console.log('Selected value is: ', value);
