@@ -8,7 +8,7 @@ import { SoldedShowComponent } from './solded-show/solded-show.component';
 
 const routes: Routes = [
     { path: 'list', component: SoldedListComponent },
-    { path: 'show', component: SoldedShowComponent }
+    { path: 'show/:id', component: SoldedShowComponent }
 ];
 
 @NgModule({

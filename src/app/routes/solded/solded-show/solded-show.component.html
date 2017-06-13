@@ -1,30 +1,123 @@
 <div class="content-heading">Solded</div>
-
-<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
-                <!-- START panel-->
+        <div class="row">
+            <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <fieldset class="b0">
-                            <legend>Add Color</legend>
-                        </fieldset>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Name</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" type="text" formControlName="name"/>
+                        <p class="lead bb">Article</p>
+                        <form class="form-horizontal p-20">
+                            <div class="form-group">
+                                <div class="col-sm-4">#</div>
+                                <div class="col-sm-8">
+                                    <strong>{{ solded.article?.id }}</strong>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-                        <button type="submit" class="btn btn-sm btn-success">Save</button>
-                        <button routerLink="/colors/list" class="btn btn-sm btn-danger">Back</button>
+                            <div class="form-group">
+                                <div class="col-sm-4">Name:</div>
+                                <div class="col-sm-8">
+                                    <strong>{{ solded.article?.name }}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Price:</div>
+                                <div class="col-sm-8">
+                                    <strong>{{ solded.article?.price }}€</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Quantity:</div>
+                                <div class="col-sm-8">
+                                    <strong>{{ solded.article?.quantity }}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Categories:</div>
+                                <div class="col-sm-8">
+                                    <div class="label label-primary label-article">{{ solded.article?.category?.name }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Materials:</div>
+                                <div class="col-sm-8">
+                                    <div class="label label-primary label-article" *ngFor="let material of solded.article?.materials">{{ material.name }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Colors:</div>
+                                <div class="col-sm-8">
+                                    <div class="label label-primary label-article" *ngFor="let color of solded.article?.colors">{{ color.name }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Brands:</div>
+                                <div class="col-sm-8">
+                                    <div class="label label-primary label-article">{{ solded.article?.brand?.name }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Shop:</div>
+                                <div class="col-sm-8">
+                                    <div class="label label-primary label-article">{{ solded.article?.shop?.name }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Shop:</div>
+                                <div class="col-sm-8">
+                                    <span style="text-align: center" *ngIf="!solded.article?.solded" class="label label-success">Stock</span>
+                                    <span style="text-align: center" *ngIf="solded.article?.solded" class="label label-danger">Sold</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">On Website:</div>
+                                <div class="col-sm-8">
+                                    <span style="text-align: center" *ngIf="solded.article?.on_website" class="label label-success">Yes</span>
+                                    <span style="text-align: center" *ngIf="!solded.article?.on_website" class="label label-danger">No</span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p class="lead bb">Sold By</p>          
+                        <form class="form-horizontal p-20">
+                            <div class="form-group">
+                                <div class="col-sm-4">#</div>
+                                <div class="col-sm-8">
+                                    <strong>{{ solded.sold_by?.id }}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Name:</div>
+                                <div class="col-sm-8">
+                                    <strong>{{ solded.sold_by?.name }}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Firstname:</div>
+                                <div class="col-sm-8">
+                                    <strong>{{ solded.sold_by?.firstname }}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Role:</div>
+                                <div class="col-sm-8">
+                                    <strong>{{ solded.sold_by?.role?.libelle }}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">Sold At:</div>
+                                <div class="col-sm-8">
+                                    <strong>{{ solded.sold_at }}</strong>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+
+
+        <button routerLink="/solded/list" class="btn btn-sm btn-danger">Back</button>
+   

@@ -12,9 +12,6 @@
                 <th>
                     <strong>NAME</strong>
                 </th>
-                <th>
-                    <strong>ACTIVE</strong>
-                </th>
                 <th class="text-center">
                     <strong>ACTION</strong>
                 </th>
@@ -24,7 +21,6 @@
             <tr *ngFor="let role of roles">
                 <td>{{ role.id }}</td>
                 <td>{{ role.libelle }}</td>
-                <td>{{ role.isactive }}</td>
                 <td class="text-center">
                     <button [routerLink]="['/roles/edit', role.id]" class="btn btn-xs btn-warning" type="button">
                         <em class="fa fa-wrench"></em>

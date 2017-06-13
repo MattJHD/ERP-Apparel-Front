@@ -22,7 +22,6 @@ export class SoldedShowComponent implements OnInit {
         showCloseButton: true
     });
 
-
     currUser = JSON.parse(localStorage.getItem('apparelUser'));
 
     id: number;
