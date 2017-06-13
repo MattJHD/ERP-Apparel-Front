@@ -30,6 +30,7 @@ export const routes = [
             { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
             
             { path: 'articles', loadChildren: './articles/articles.module#ArticlesModule' },
+            { path: 'solded', loadChildren: './solded/solded.module#SoldedModule' },
             { path: 'colors', loadChildren: './colors/colors.module#ColorsModule' },
             { path: 'materials', loadChildren: './materials/materials.module#MaterialsModule' },
             { path: 'categories', loadChildren: './categories/categories.module#CategoriesModule' },
@@ -40,7 +41,7 @@ export const routes = [
             { path: 'roles', loadChildren: './roles/roles.module#RolesModule' },
             { path: 'groups', loadChildren: './groups/groups.module#GroupsModule' }
         ]
-        /*,canActivate: [AuthGuard]*/
+        ,canActivate: [AuthGuard]
     },
 
     // Not lazy-loaded routes

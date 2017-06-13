@@ -52,6 +52,11 @@ export class ArticlesAddComponent implements OnInit {
 
     onWebsite : boolean = false;
 
+    currUser = JSON.parse(localStorage.getItem('apparelUser'));
+
+    //PERMS
+    permAddArticle: boolean = false 
+
     constructor(
         fb: FormBuilder,
         private toasterService: ToasterService,
@@ -71,11 +76,23 @@ export class ArticlesAddComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.permAddArticle = this.checkPerm(this.currUser['role']['permissions'], 'add_article');
+
+        if(!this.permAddArticle) {
+            this.router.navigate(['/articles/list']);
+        }
+
         this.getAllCategories();
         this.getAllMaterials();
         this.getAllColors();
         this.getAllBrands();
         this.getAllShops();
+    }
+
+    checkPerm(arr, val) {
+        return arr.some(function(arrVal) {
+            return val === arrVal.libelle;
+        });
     }
 
     submitForm($ev, value: any) {

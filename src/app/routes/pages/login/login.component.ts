@@ -31,14 +31,19 @@ export class LoginComponent implements OnInit {
             this.valForm.controls[c].markAsTouched();
         }
         if (this.valForm.valid) {
-            this.authService
-                .authenticate(value)
-                .subscribe(
-                    data => { 
-                        localStorage.setItem('id_token', data.token);
-                        this.router.navigate(['/']);	
-                    },
-                );
+            this.authService.authenticate(value)
+                            .subscribe(
+                                data => {
+                                    localStorage.setItem('id_token', data['token']);
+                                    console.log(value['username'])
+                                    this.authService.login(value['username'])
+                                                    .subscribe(
+                                                        data => {
+                                                            this.router.navigate(['/']);	
+                                                        },
+                                                    );	
+                                },
+                            );
         }
     }
 

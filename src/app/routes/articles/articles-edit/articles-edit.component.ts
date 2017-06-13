@@ -65,6 +65,11 @@ export class ArticlesEditComponent implements OnInit {
     validMaterial: any[] = [];
     changeMaterial: boolean = false;
 
+    currUser = JSON.parse(localStorage.getItem('apparelUser'));
+
+    //PERMS
+    permAddArticle: boolean = false 
+
     constructor(
         private route: ActivatedRoute, 
         fb: FormBuilder,
@@ -85,9 +90,21 @@ export class ArticlesEditComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.permAddArticle = this.checkPerm(this.currUser['role']['permissions'], 'add_article');
+
+        if(!this.permAddArticle) {
+            this.router.navigate(['/articles/list']);
+        }
+        
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id'];
             this.getArticle(this.id);
+        });
+    }
+
+    checkPerm(arr, val) {
+        return arr.some(function(arrVal) {
+            return val === arrVal.libelle;
         });
     }
 

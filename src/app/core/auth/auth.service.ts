@@ -18,14 +18,14 @@ export class AuthService {
 
     // Observable string streams
     onlogin$ = this.onlogin.asObservable();
-/*
-    login(data) {
-            return this.http.post(this.url + 'api/check_login', data, {
+
+    login(username) {
+            return this.http.get(this.url + 'users/username='+username, {
                 headers: new Headers()
             })
                             .map((response: Response) => {
                                 // login successful if there's a jwt token in the response
-                                let token = response.json();
+                                let user = response.json();
                                 if (user) {
                                     console.log(user);
                                     // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -34,7 +34,7 @@ export class AuthService {
                                 }
                             });
     }
-
+/*
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('apparelUser');
@@ -48,14 +48,16 @@ export class AuthService {
         body.append('password', user.password);
   	let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         let options = new RequestOptions({headers: headers});
-
+ 
   	return this.http
   	        .post(url, body.toString(), options)
-            .map((data: Response) => data.json());
+  		.map((data: Response) => data.json());
     }
 
     logout() {
         localStorage.removeItem('id_token');
+        localStorage.removeItem('apparelUser');
+        this.router.navigate(['/login']) 
     }
 
     loggedIn() {

@@ -8,7 +8,7 @@
     </div>
     <!-- Name and Job-->
     <div class="user-block-info">
-        <span class="user-block-name">{{ 'sidebar.WELCOME' | translate }}  Sara</span>
-        <span class="user-block-role">Manager</span>
+        <span class="user-block-name">{{ currUser.name }} {{  currUser.firstname }}</span>
+        <span class="user-block-role">{{ currUser.role?.libelle }}</span>
     </div>
 </div>

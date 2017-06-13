@@ -6,6 +6,7 @@ declare var $: any;
 import { UserblockService } from '../sidebar/userblock/userblock.service';
 import { SettingsService } from '../../core/settings/settings.service';
 import { MenuService } from '../../core/menu/menu.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
     isNavSearchVisible: boolean;
     @ViewChild('fsbutton') fsbutton;  // the fullscreen button
 
-    constructor(private menu: MenuService, private userblockService: UserblockService, private settings: SettingsService) {
+    constructor(private menu: MenuService, private userblockService: UserblockService, private settings: SettingsService, private authService: AuthService) {
 
         // show only a few items on demo
         this.menuItems = menu.getMenu().slice(0,4); // for horizontal layout
@@ -79,5 +80,9 @@ export class HeaderComponent implements OnInit {
         else {
             el.children('em').removeClass('fa-compress').addClass('fa-expand');
         }
+    }
+
+    logout() {
+        this.authService.logout();
     }
 }

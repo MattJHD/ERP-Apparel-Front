@@ -10,12 +10,13 @@ const Articles = {
     icon: 'icon-basket-loaded',
     submenu: [
         {
-            text: 'List',
+            text: 'Stock List',
             link: '/articles/list'
-        },/*
+        },
         {
-            text: 'Echange'
-        }*/
+            text: 'Solded List',
+            link: '/solded/list'
+        }
     ]
 }
 
@@ -466,7 +467,7 @@ export const menu = [
     /*Social,
     Game,*/
     Settings,
-/*
+
     headingComponents,
     Widgets,
     Elements,
@@ -478,5 +479,5 @@ export const menu = [
     Pages,
     Blog,
     Ecommerce,
-    Extras*/
+    Extras
 ];
