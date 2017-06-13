@@ -1,6 +1,6 @@
-<div class="content-heading">Articles</div>
+<div class="content-heading">Users</div>
 <div class="table-responsive b0">
-    <button class="btn btn-labeled btn-primary" routerLink="/articles/add"><span class="btn-label"><i class="fa fa-plus"></i></span>Add Article</button>
+    <button class="btn btn-labeled btn-primary" routerLink="/users/add"><span class="btn-label"><i class="fa fa-plus"></i></span>Add User</button>
     <br/>
     <br/>
     <!--
@@ -55,25 +55,16 @@
                     <strong>NAME</strong>
                 </th>
                 <th>
-                    <strong>PRICE</strong>
+                    <strong>FIRSTNAME</strong>
                 </th>
                 <th>
-                    <strong>CATEGORIES</strong>
+                    <strong>EMAIL</strong>
                 </th>
                 <th>
-                    <strong>MATERIALS</strong>
+                    <strong>ROLE</strong>
                 </th>
                 <th>
-                    <strong>COLORS</strong>
-                </th>
-                <th>
-                    <strong>BRAND</strong>
-                </th>
-                <th>
-                    <strong>SHOP</strong>
-                </th>
-                <th>
-                    <strong>ON WEBSITE</strong>
+                    <strong>ACTIVE</strong>
                 </th>
                 <th class="text-center">
                     <strong>ACTION</strong>
@@ -81,24 +72,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let article of articles">
-                <td>{{ article.id }}</td>
-                <td>{{ article.name }}</td>
-                <td>{{ article.price }}€</td>          
-                <td><span class="label label-primary label-article">{{ article.category.name }}</span></td>
-                <td><span class="label label-primary label-article" *ngFor="let material of article.materials">{{ material.name }}</span></td>
-                <td><span class="label label-primary label-article" *ngFor="let color of article.colors">{{ color.name }}</span></td>
-                <td><span class="label label-primary label-article">{{ article.brand.name }}</span></td>
-                <td><span class="label label-primary label-article">{{ article.shop.name }}</span></td>
+            <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.firstname }}</td>    
+                <td>{{ user.email }}</td>    
+                <td>{{ user.role?.libelle }}</td>         
                 <td>
-                    <span style="text-align: center" *ngIf="article.on_website" class="label label-success">Yes</span>
-                    <span style="text-align: center" *ngIf="!article.on_website" class="label label-danger">No</span>
+                    <span style="text-align: center" *ngIf="user.isactive" class="label label-success">Yes</span>
+                    <span style="text-align: center" *ngIf="!user.isactive" class="label label-danger">No</span>
                 </td>
                 <td class="text-center">
-                    <button [routerLink]="['/articles/show', article.id]" class="btn btn-xs btn-primary" type="button">
+                    <button [routerLink]="['/users/show', user.id]" class="btn btn-xs btn-primary" type="button">
                         <em class="fa fa-search"></em>
                     </button>
-                    <button [routerLink]="['/articles/edit', article.id]" class="btn btn-xs btn-warning" type="button">
+                    <button [routerLink]="['/users/edit', user.id]" class="btn btn-xs btn-warning" type="button">
                         <em class="fa fa-wrench"></em>
                     </button>
                 </td>

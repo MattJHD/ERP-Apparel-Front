@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../../../core/settings/settings.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -11,11 +14,12 @@ import { CustomValidators } from 'ng2-validation';
 export class LoginComponent implements OnInit {
 
     valForm: FormGroup;
+    alertString;
 
-    constructor(public settings: SettingsService, fb: FormBuilder) {
+    constructor(public settings: SettingsService, fb: FormBuilder, private router: Router, private authService: AuthService) {
 
         this.valForm = fb.group({
-            'email': [null, Validators.compose([Validators.required, CustomValidators.email])],
+            'username': [null, Validators.required],
             'password': [null, Validators.required]
         });
 
@@ -27,13 +31,19 @@ export class LoginComponent implements OnInit {
             this.valForm.controls[c].markAsTouched();
         }
         if (this.valForm.valid) {
-            console.log('Valid!');
-            console.log(value);
+            this.authService
+                .authenticate(value)
+                .subscribe(
+                    data => { 
+                        localStorage.setItem('id_token', data.token);
+                        this.router.navigate(['/']);	
+                    },
+                );
         }
     }
 
     ngOnInit() {
-
+        this.authService.logout();
     }
 
 }

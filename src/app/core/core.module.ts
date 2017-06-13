@@ -6,6 +6,8 @@ import { TranslatorService } from './translator/translator.service';
 import { MenuService } from './menu/menu.service';
 import { GlobalsService } from './globals/globals.service';
 import { CrudService } from './crud/crud.service';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './auth/auth.service';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
@@ -18,7 +20,9 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
         TranslatorService,
         MenuService,
         GlobalsService,
-        CrudService
+        CrudService,
+        AuthGuard,
+        AuthService
     ],
     declarations: [
     ],

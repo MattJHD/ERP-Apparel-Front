@@ -8,6 +8,8 @@ import { MaintenanceComponent } from './pages/maintenance/maintenance.component'
 import { Error404Component } from './pages/error404/error404.component';
 import { Error500Component } from './pages/error500/error500.component';
 
+import { AuthGuard } from '../core/guards/auth.guard';
+
 export const routes = [
 
     {
@@ -34,8 +36,11 @@ export const routes = [
             { path: 'brands', loadChildren: './brands/brands.module#BrandsModule' },
             { path: 'shops', loadChildren: './shops/shops.module#ShopsModule' },
 
-            { path: 'roles', loadChildren: './roles/roles.module#RolesModule' }
+            { path: 'users', loadChildren: './users/users.module#UsersModule' },
+            { path: 'roles', loadChildren: './roles/roles.module#RolesModule' },
+            { path: 'groups', loadChildren: './groups/groups.module#GroupsModule' }
         ]
+        /*,canActivate: [AuthGuard]*/
     },
 
     // Not lazy-loaded routes

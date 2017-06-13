@@ -12,18 +12,34 @@ const Articles = {
         {
             text: 'List',
             link: '/articles/list'
-        },
+        },/*
         {
             text: 'Echange'
-        }
+        }*/
     ]
 }
 
 
 const Settings = {
-    text: 'Setting',
+    text: 'Properties',
     icon: 'fa fa-gear',
     submenu: [
+        {
+            text: 'Users',
+            link: '/users/list',
+        },
+        {
+            text: 'Roles',
+            link: '/roles/list',
+        },
+        {
+            text: 'Groups',
+            link: '/groups/list',
+        },
+        {
+            text: 'Shops',
+            link: '/shops/list',
+        },
         {
             text: 'Colors',
             link: '/colors/list',
@@ -39,14 +55,6 @@ const Settings = {
         {
             text: 'Brands',
             link: '/brands/list',
-        },
-        {
-            text: 'Shops',
-            link: '/shops/list',
-        },
-        {
-            text: 'Roles',
-            link: '/roles/list',
         },
     ]
 }

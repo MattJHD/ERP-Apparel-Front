@@ -1,0 +1,101 @@
+<div class="content-heading">Products</div>
+
+<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+                <!-- START panel-->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <fieldset class="b0">
+                            <legend>Add Articles</legend>
+                        </fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Active</label>
+                            <div class="col-sm-6">
+                                <label class="switch">
+                                    <input type="checkbox" [(ngModel)]="isactive" formControlName="isactive">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" formControlName="name"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Firstname</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" formControlName="firstname"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Username</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" formControlName="username"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="email" formControlName="email"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Phone</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="number" formControlName="phone"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Role</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" formControlName="role">
+                                    <option *ngFor="let role of allRoles" [ngValue]="role">{{ role.libelle }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Shops</label>
+                            <div class="col-sm-6">
+                                <ng-select #SelectShops
+                                    (data)="valueShops" 
+                                    [multiple]="true"
+                                    [items]="itemsShops" 
+                                    [disabled]="disabled" 
+                                    (data)="refreshValueShops($event)" 
+                                    (selected)="selectedShops($event)" 
+                                    (removed)="removedShops($event)"
+                                    placeholder="No Shops selected">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Groups</label>
+                            <div class="col-sm-6">
+                                <ng-select #SelectGroups
+                                    (data)="valueGroups" 
+                                    [multiple]="true"
+                                    [items]="itemsGroups" 
+                                    [disabled]="disabled" 
+                                    (data)="refreshValueGroups($event)" 
+                                    (selected)="selectedGroups($event)" 
+                                    (removed)="removedGroups($event)"
+                                    placeholder="No Groups selected">
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-sm btn-success">Save</button>
+                        <button routerLink="/articles/list" class="btn btn-sm btn-danger">Back</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

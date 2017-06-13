@@ -21,10 +21,8 @@ export class ArticlesAddComponent implements OnInit {
         showCloseButton: true
     });
 
-    @ViewChild('SelectCategories') public selectCategories: SelectComponent;
     @ViewChild('SelectMaterials') public selectMaterials: SelectComponent;
     @ViewChild('SelectColors') public selectColors: SelectComponent;
-    @ViewChild('SelectBrands') public selectBrands: SelectComponent;
   
     valForm: FormGroup;
 
@@ -52,6 +50,8 @@ export class ArticlesAddComponent implements OnInit {
     validBrands: any[] = [];
     valueBrands: any = {};
 
+    onWebsite : boolean = false;
+
     constructor(
         fb: FormBuilder,
         private toasterService: ToasterService,
@@ -64,7 +64,9 @@ export class ArticlesAddComponent implements OnInit {
                 'size': [null],
                 'shop': [null],
                 'brand': [null],
-                'category': [null]
+                'category': [null],
+                'on_website': [],
+                'quantity': [null]
             });
     }
 
@@ -139,6 +141,10 @@ export class ArticlesAddComponent implements OnInit {
 
             if(value['category'] == null ) {
                 return this.toasterService.pop('error', 'Category', 'Invalid Category');
+            }
+
+            if(value['quantity'] == null) {
+                return this.toasterService.pop('error', 'Quantity', 'Invalid Quantity');
             }
 
             console.log('Valid !!!')

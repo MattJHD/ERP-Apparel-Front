@@ -1,0 +1,78 @@
+<div class="content-heading">Users</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead bb">Details</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">#</div>
+                        <div class="col-sm-8">
+                            <strong>{{ user.id }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Name:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ user.name }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Firstname:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ user.firstname }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Username:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ user.username }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Role:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ user.role?.libelle }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Email:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ user.email }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Phone:</div>
+                        <div class="col-sm-8">
+                            <strong>{{ user.phone }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Groups:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-primary label-article" *ngFor="let group of user.groups">{{ group.name }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Shops:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-primary label-article" *ngFor="let shop of user.shops">{{ shop.name }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">Active:</div>
+                        <div class="col-sm-8">
+                            <span style="text-align: center" *ngIf="user.isactive" class="label label-success">Yes</span>
+                            <span style="text-align: center" *ngIf="!user.isactive" class="label label-danger">No</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button routerLink="/users/list" class="btn btn-sm btn-danger">Back</button>
+    </div>
+</div>

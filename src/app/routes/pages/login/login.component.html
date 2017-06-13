@@ -7,14 +7,14 @@
                     <img class="block-center img-rounded" src="assets/img/logo.png" alt="Image" />
                 </a>
             </div>
+            
             <div class="panel-body">
                 <p class="text-center pv">SIGN IN TO CONTINUE.</p>
                 <form [formGroup]="valForm" class="form-validate mb-lg" role="form" name="loginForm" novalidate="" (submit)="submitForm($event, valForm.value)">
                     <div class="form-group has-feedback">
-                        <input class="form-control" id="exampleInputEmail1" type="email" name="email" placeholder="Enter email" autocomplete="off" formControlName="email" required="" />
+                        <input class="form-control" id="exampleInputEmail1" type="text" name="username" placeholder="Enter Username" autocomplete="on" formControlName="username" required="" />
                         <span class="fa fa-envelope form-control-feedback text-muted"></span>
-                        <span class="text-danger" *ngIf="valForm.controls['email'].hasError('required') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">This field is required</span>
-                        <span class="text-danger" *ngIf="valForm.controls['email'].hasError('email') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">This field must be a valid email address</span>
+                        <span class="text-danger" *ngIf="valForm.controls['username'].hasError('required') && (valForm.controls['username'].dirty || valForm.controls['username'].touched)">This field is required</span>
                     </div>
                     <div class="form-group has-feedback">
                         <input class="form-control" id="exampleInputPassword1" type="password" name="password" placeholder="Password" formControlName="password" required="" />
@@ -22,18 +22,19 @@
                         <span class="text-danger" *ngIf="valForm.controls['password'].hasError('required') && (valForm.controls['password'].dirty || valForm.controls['password'].touched)">This field is required</span>
                     </div>
                     <div class="clearfix">
+                        <!--
                         <div class="checkbox c-checkbox pull-left mt0">
                             <label>
                                 <input type="checkbox" value="" name="account_remember"/>
                                 <span class="fa fa-check"></span>Remember Me</label>
                         </div>
-                        <div class="pull-right"><a class="text-muted" [routerLink]="'/recover'">Forgot your password?</a>
-                        </div>
+                        -->
                     </div>
-                    <button class="btn btn-block btn-primary mt-lg" type="submit">Login</button>
+                    <button class="btn btn-block btn-success mt-lg" type="submit">Login</button>
                 </form>
-                <!-- <div class="alert alert-danger text-center" ></div> -->
+                <!-- <div class="alert alert-danger text-center" ></div> ->
                 <p class="pt-lg text-center">Need to Signup?</p><a class="btn btn-block btn-default" [routerLink]="'/register'">Register Now</a>
+                -->
             </div>
         </div>
         <!-- END panel-->
@@ -41,9 +42,7 @@
             <span>&copy;</span>
             <span>{{ settings.app.year }}</span>
             <span>-</span>
-            <span>{{ settings.app.name }}</span>
-            <br/>
-            <span>{{ settings.app.description }}</span>
+            <span>Apparel</span>
         </div>
     </div>
 </div>
