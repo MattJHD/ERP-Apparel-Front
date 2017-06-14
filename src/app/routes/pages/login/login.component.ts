@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
                                     this.authService.login(value['username'])
                                                     .subscribe(
                                                         data => {
-                                                            this.router.navigate(['/']);	
+                                                            this.router.navigate(['/dashboard/v1']);	
                                                         },
                                                     );	
                                 },

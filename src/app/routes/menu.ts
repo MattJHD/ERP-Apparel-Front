@@ -77,24 +77,8 @@ const Social = {
 
 const Dashboard = {
     text: 'Dashboard',
-    link: '/dashboard',
-    icon: 'icon-speedometer',
-    submenu: [
-        {
-            //text: 'Dashbord v1',
-            text: 'Manageur',
-            link: '/dashboard/v1'
-        },
-        {
-            text: 'Vendeur',
-            link: '/dashboard/v2'
-        }
-        /*,
-        {
-            text: 'Dashbord v3',
-            link: '/dashboard/v3'
-        }*/
-    ]
+    link: '/dashboard/v1',
+    icon: 'icon-speedometer'
 };
 
 const Widgets = {
@@ -461,7 +445,7 @@ const headingMore = {
 
 export const menu = [
     //headingMain,
-    Home,
+    //Home,
     Dashboard,
     Articles,
     /*Social,
