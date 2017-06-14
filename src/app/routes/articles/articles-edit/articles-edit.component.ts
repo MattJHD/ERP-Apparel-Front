@@ -337,7 +337,7 @@ export class ArticlesEditComponent implements OnInit {
         this.changeMaterial = true;
     }
 
-    public refreshvalueMaterials(value:any):void {
+    public refreshValueMaterials(value:any):void {
         this.valueMaterial = value;
         this.changeMaterial = true;
     }
